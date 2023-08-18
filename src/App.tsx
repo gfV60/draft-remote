@@ -4,7 +4,7 @@ import SortingPage from "./pages/SortingPage";
 function App() {
 
   return (
-    <SortingPage className="app" />
+    <SortingPage />
   );
 }
 

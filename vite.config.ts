@@ -5,27 +5,11 @@ import federation from "@originjs/vite-plugin-federation";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    proxy: {
-      '/api': {
-        target: "https://int-rls-gateway.controlpanel.pro",
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, ''),
-      }
-    },
     open: "/",
     port:3000
   },
   plugins: [
     react(),
-    federation({
-      remoteType: "var",
-      name: "rls-manual-ui",
-      exposes: {
-        './App': './src/App.tsx'
-      },
-      filename: "rls-manual-ui.js",
-      shared: ['react', 'react-dom', '@domains/mf-events'],
-    })
   ],
   test: {
     globals: true,

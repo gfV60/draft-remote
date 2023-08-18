@@ -64,11 +64,6 @@ export default function SortingPanelDndKit(props: SortingPanelDndKitProps) {
         setActiveItem(undefined)
     }
 
-    const handleButtonClick = () => {
-        const itemIds = players.map((item) => item.id)
-        alert(itemIds)
-    }
-
     return (
         <DndContext
             sensors={sensors}

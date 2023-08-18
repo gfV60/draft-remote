@@ -51,7 +51,7 @@ export default function SortingPage() {
     const [centrocampisti, setCentrocampisti] = useState<Player[]>(mids);
     const [attaccanti, setAttaccanti] = useState<Player[]>(fwds);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    const handleChange = (_event: React.SyntheticEvent, newValue: number) => {
         setValue(newValue);
     };
 
@@ -90,7 +90,7 @@ export default function SortingPage() {
                     <ExportPanel gs={portieri} ds={difensori} ms={centrocampisti} fs={attaccanti}/>
                 </TabPanel>
             </Grid>
-            <Grid item sx={3}>{undefined}</Grid>
+            <Grid item xs={3}>{undefined}</Grid>
         </Grid>
     );
 }

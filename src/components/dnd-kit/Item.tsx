@@ -22,7 +22,7 @@ const Item = forwardRef<HTMLDivElement, Props>(
 
         return (
             <div ref={ref} style={styles} {...props}>
-                <Typography fontSize={"20px"}><DragIndicatorIcon style={{"vertical-align": "sub"}}/>{item.name}</Typography>
+                <Typography fontSize={"20px"}><DragIndicatorIcon style={{"verticalAlign": "sub"}}/>{item.name}</Typography>
             </div>
         )
     }

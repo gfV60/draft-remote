@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-const roleLimits = { 'P': 3, 'D': 8, 'C': 8, 'A': 6, };
+const roleLimits: {[key: string]: number} = { 'P': 3, 'D': 8, 'C': 8, 'A': 6, };
 const mode = "AtoP";
 
 const jsonString = fs.readFileSync('./src/assets/db.json', 'utf-8');
@@ -39,20 +39,20 @@ export default function doDraft() {
         if(!isSlotAvailable(rosters[0], currentRole)) {
             currentRole = roleOrder[roleOrder.indexOf(currentRole)+1];
         }
-        for(const i: number of order) {
+        for(const i of order) {
             assignNextValidPlayer(i, currentRole);
         }
         order = resortOrder(currentRosterValue);
     }
-    const pino=1;
+//    const pino=1;
 
 }
 
 function inflateLists(): Player[][] {
-    const ret = [[],[],[],[],[],[],[],[],];
+    const ret: Player[][] = [[],[],[],[],[],[],[],[],];
     for(const i in inputLists) {
         for(const j of inputLists[i]) {
-            const player = db.find((p) => p.name === j);
+            const player: Player = db.find((p) => p.name === j) as Player;
             ret[i].push(player);
         }
         ret[i].reverse();
