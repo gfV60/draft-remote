@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from './preload-helper-1e3b7978.js';
+import { _ as __vitePreload } from './preload-helper-c9efef17.js';
 
 const exportSet = new Set(['Module', '__esModule', 'default', '_export_sfc']);
       let moduleMap = {
@@ -24,7 +24,7 @@ const exportSet = new Set(['Module', '__esModule', 'default', '_export_sfc']);
       });
     };
     async function __federation_import(name) {
-        return __vitePreload(() => import(name),true?[]:void 0);
+        return __vitePreload(() => import(name),true?[]:void 0,import.meta.url);
     }    const get =(module) => {
         return moduleMap[module]();
     };

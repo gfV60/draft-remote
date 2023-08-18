@@ -1,4 +1,4 @@
-import { _ as __vitePreload } from './preload-helper-1e3b7978.js';
+import { _ as __vitePreload } from './preload-helper-c9efef17.js';
 
 const buildIdentifier = "[0-9A-Za-z-]+";
 const build = `(?:\\+(${buildIdentifier}(?:\\.${buildIdentifier})*))`;
@@ -366,7 +366,7 @@ async function importShared(name, shareScope = 'default') {
 }
 // eslint-disable-next-line
 async function __federation_import(name) {
-  return __vitePreload(() => import(name),true?[]:void 0)
+  return __vitePreload(() => import(name),true?[]:void 0,import.meta.url)
 }
 async function getSharedFromRuntime(name, shareScope) {
   let module = null;
