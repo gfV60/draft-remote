@@ -3,6 +3,8 @@ import * as fs from 'fs';
 const roleLimits: {[key: string]: number} = { 'P': 3, 'D': 8, 'C': 8, 'A': 6, };
 const mode = "AtoP";
 
+const names = ['Bracciali', 'Francolini', 'Gaggini', 'Gambarota', 'Garzella', 'Giuntoli', 'Melani', 'Vagarini'];
+
 const jsonString = fs.readFileSync('./src/assets/db.json', 'utf-8');
 const db: Player[] = JSON.parse(jsonString);
 
@@ -11,8 +13,9 @@ const inputLists: string[][] = [[],[],[],[],[],[],[],[],];
 const jsonString2 = fs.readFileSync('./src/assets/list-example.json', 'utf-8');
 const parsedExampleList: string[] = JSON.parse(jsonString2);
 for(let i=0; i<8; i++) {
-    inputLists[i] = parsedExampleList;
+    inputLists[i] = [...parsedExampleList];
 }
+inputLists[1].unshift('Diaw');
 
 let fullLists: Player[][] = [[],[],[],[],[],[],[],[],];
 
@@ -44,7 +47,8 @@ export default function doDraft() {
         }
         order = resortOrder(currentRosterValue);
     }
-//    const pino=1;
+    const pino = generateOutputString();
+    const eeee = pino;
 
 }
 
@@ -82,17 +86,6 @@ function assignNextValidPlayer(teamIndex: number, currentRole: string): void {
             break;
         }
     }
-
-    // for(let i=0; i < fullLists[teamIndex].length; i++) {
-    //     curr = fullLists[teamIndex][i];
-    //     if(!isAssigned(curr) && isSlotAvailable(rosters[teamIndex], curr.role)) {
-    //         rosters[teamIndex].push(curr);
-    //         currentRosterValue[teamIndex] = currentRosterValue[teamIndex] + curr.fvm;
-    //         assigned.push(curr);
-    //         fullLists[teamIndex].splice(0, i+1);
-    //         break;
-    //     }
-    // }
 }
 
 function isAssigned(player: Player):boolean {
@@ -114,4 +107,14 @@ function resortOrder(order: number[]): number[] {
     const result: number[] = Array.from(order.keys())
         .sort((a, b) => order[a] - order[b]);
     return result;
+}
+
+function generateOutputString(): string {
+    const string = rosters.reduce((acc: string, roster, index) => {
+        const name: string = names[index];
+        return acc + '-'.repeat(name.length + 2) + `\n|${name}|\n` + '-'.repeat(name.length + 2) +"\n" + roster
+            .sort((a, b) => (b.role.localeCompare(a.role) || b.fvm - a.fvm))
+            .map((player) => player.name) + "\n\n\n";
+    }, '');
+    return string.replaceAll(',', "\n");
 }
