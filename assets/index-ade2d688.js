@@ -21670,7 +21670,8 @@ const SortableItem = ({ item, ...props }) => {
   });
   const styles = {
     transform: CSS.Transform.toString(transform),
-    transition: transition || void 0
+    transition: transition || void 0,
+    touchAction: "none"
   };
   return /* @__PURE__ */ jsxRuntimeExports.jsx(
     Item,
