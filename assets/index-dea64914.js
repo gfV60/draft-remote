@@ -21689,7 +21689,7 @@ const SortableItem = ({ item, ...props }) => {
 function SortingPanelDndKit(props) {
   const { players, setPlayers } = props;
   const [activeItem, setActiveItem] = reactExports.useState();
-  const sensors = useSensors(useSensor(PointerSensor), useSensor(TouchSensor));
+  const sensors = useSensors(useSensor(MouseSensor), useSensor(TouchSensor));
   const handleDragStart = (event) => {
     const { active } = event;
     setActiveItem(players.find((item) => item.id === active.id));
